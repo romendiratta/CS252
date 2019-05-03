@@ -1,0 +1,23 @@
+.ORIG x3000
+	AND R5, R5, #0
+	ADD R5, R5, #1
+	AND R1, R1, #0
+	AND R2, R2, #0
+	LD R3, NSIXTEEN
+	LD R7, RESULT
+	
+
+MskLoop	AND R4, R0, R5
+	BRz NotOne
+	ADD R1, R1, #1
+
+NotOne	ADD R5, R5, R5
+	ADD R2, R2, #1
+	ADD R6, R2, R3
+	BRn MskLoop
+	STR R1, R7, #0 
+	HALT
+
+NSIXTEEN .FILL #-16
+RESULT	.FILL x4000
+	.END	
